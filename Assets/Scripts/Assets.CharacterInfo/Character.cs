@@ -42,7 +42,7 @@ namespace Assets.CharacterInfo
             Stats = GetComponent<PlayerStats>();
             Weapon = GetComponentInChildren<Weapon>();
 
-            PlayerDied += FindObjectOfType<UITextManager>().OnPlayerDeath_DisPlayGameOver;
+            //PlayerDied += FindObjectOfType<UITextManager>().OnPlayerDeath_DisPlayGameOver;
 
             transform.position = new Vector3(transform.position.x, 0.17f, transform.position.z);
         }

@@ -30,12 +30,6 @@ namespace Assets.Supervisor
                 Destroy(gameObject);
             
             Instance = this;
-
-            CrystalQuestCleared += UITextManager.Instance.OnQuestCleared_DisplayQuestCompleteText;
-            CrystalQuestCleared += OnCrystalQuestCleared_KillAllEnemies;
-            var crystal = FindObjectOfType<Crystal>();
-            CrystalQuestCleared += crystal.OnQuestComplete_EmitLight;
-            CrystalQuestCleared += crystal.OnQuestComplete_StopSpawning;
         }
 
         private void Update()

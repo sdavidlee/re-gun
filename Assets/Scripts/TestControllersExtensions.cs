@@ -15,23 +15,21 @@ namespace Assets.Scripts.Extensions
             if (Time.time < stats.NextAvailabeAttack)
                 return @this;
 
-            bool isAttacking = GetButtonDown(@this.Keys[KeyNames.AttackKey]);
-            if (isAttacking)
-            {
-                @this.Animator.SetTrigger("attack");
-                @this.Movement.CanMove = false;
-                @this.Movement.CurrentSpeed *= 0.3f;
-                stats.NextAvailabeAttack = Time.time + stats.CoolTime;
-            }
+            //bool isAttacking = GetButtonDown(@this.Keys[KeyNames.AttackKey]);
+            //if (isAttacking)
+            //{
+            //    @this.Animator.SetTrigger("attack");
+            //    @this.Movement.CanMove = false;
+            //    @this.Movement.CurrentSpeed *= 0.3f;
+            //    stats.NextAvailabeAttack = Time.time + stats.CoolTime;
+            //}
 
             return @this;
         }
 
         public static TestController CheckSkill(this TestController @this)
         {
-            if (GetButtonDown(@this.Keys[KeyNames.ThrowWeaponKey]))
-                Skills.ThrowWeapon.Use();
-            else if (GetButtonDown(@this.Keys[KeyNames.RollKey]))
+            if (GetButtonDown(@this.Keys[KeyNames.RollKey]))
                 Skills.Roll.Use();
 
             return @this;

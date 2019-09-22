@@ -8,12 +8,8 @@ using System.Threading.Tasks;
 namespace Assets.Fundamentals
 {
     public enum KeyNames {
-        AttackKey,
         HorizontalKey,
         VerticalKey,
-        SelectKey,
-        StartKey,
-        ThrowWeaponKey,
         RollKey
     }
 

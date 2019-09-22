@@ -32,7 +32,8 @@ namespace Assets.CharacterInfo
             ThePlayer.Animator.SetTrigger(SkillName);
             ThePlayer.CurrentAnimation = PlayerAnimations.UsingSkill;
             this.NextAvailableAttack = Time.time + CoolTime;
-            SkillsTab.Instance.GetSkillIcon(this.shortKey).DisplayCool(cool: this.CoolTime);
+            //turn the following code back on when you have put the skill icons
+            //SkillsTab.Instance.GetSkillIcon(this.shortKey).DisplayCool(cool: this.CoolTime);
         }
     }
 

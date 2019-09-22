@@ -18,12 +18,16 @@ namespace Assets.WeaponSystem
         private void Awake()
         {
             this.smooth = Mathf.Clamp01(returnSpeed * Time.deltaTime);
+            ThePlayer.Actions.retrieveMines += ReturnToPlayer;
         }
 
         public void ReturnToPlayer()
         {
-            var destination = ThePlayer.Center.position;
-            
+            Debug.Log("return");
+            var destination = ThePlayer.Center.position + Vector3.up * 1.4f;
+
+            StartCoroutine(Return());
+
             IEnumerator Return()
             {
                 yield return null;
@@ -32,8 +36,11 @@ namespace Assets.WeaponSystem
                     transform.position = Vector3.Lerp(transform.position, destination, this.smooth);
                     StartCoroutine(Return());
                 }
-                else
+                else{
+                    ThePlayer.Actions.retrieveMines -= ReturnToPlayer;
+                    Destroy(gameObject);
                     StopAllCoroutines();
+                }
 
             }
         }

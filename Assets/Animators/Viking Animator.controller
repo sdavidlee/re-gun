@@ -39,7 +39,7 @@ AnimatorStateMachine:
     m_Position: {x: 520, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7789025185184026133}
-    m_Position: {x: 40, y: 220, z: 0}
+    m_Position: {x: 10, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5264532553000275749}
     m_Position: {x: 520, y: 200, z: 0}
@@ -325,8 +325,8 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: TakeHit Layer
-    m_StateMachine: {fileID: 6833953098433349901}
+    m_Name: Retrieve Layer
+    m_StateMachine: {fileID: 4541403514076439941}
     m_Mask: {fileID: 31900000, guid: 63795aa8884ddba40b34707606e4f8f9, type: 2}
     m_Motions: []
     m_Behaviours: []
@@ -337,8 +337,8 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Retrieve Layer
-    m_StateMachine: {fileID: 4541403514076439941}
+    m_Name: TakeHit Layer
+    m_StateMachine: {fileID: 6833953098433349901}
     m_Mask: {fileID: 31900000, guid: 63795aa8884ddba40b34707606e4f8f9, type: 2}
     m_Motions: []
     m_Behaviours: []

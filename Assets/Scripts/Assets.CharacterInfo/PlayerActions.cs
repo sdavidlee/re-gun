@@ -6,13 +6,15 @@ using Assets.Fundamentals.Extensions;
 using Assets.Interfaces;
 using Assets.EnemyAI; 
 using static Assets.CharacterInfo.PlayerStats;
+using System;
 
 namespace Assets.CharacterInfo
 {
     public class PlayerActions : MonoBehaviour
     {
+        public event Action retrieveMines;
+
         private float offset = 0.8f;
-        private Collider[] hitResults = new Collider[5];
         private Character Self { get; set; }
         private Animator Animator { get; set; }
         private PlayerStats Stats { get; set; }
@@ -23,6 +25,15 @@ namespace Assets.CharacterInfo
             Self = GetComponent<Character>();
             Animator = GetComponent<Animator>();
             Stats = GetComponent<PlayerStats>();
+        }
+
+        public void OnMinesRetrievedCalled()
+        {
+            Debug.Log("called");
+            if (retrieveMines == null)
+                Debug.Log("no subscrbiers");
+            else
+                this.retrieveMines?.Invoke();
         }
 
         public void InstallMine()

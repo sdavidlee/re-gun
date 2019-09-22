@@ -17,29 +17,101 @@ public class Turret : MonoBehaviour
     public int numPatterns = 3;
     public GameObject projectilePrefab;
     public float burstFireDelay = 1.0f;
+    public float sFireDelay = 0.1f;
 
     float fireTime = 0.0f;
+    bool sFireActive = false;
+    bool sFireDirectionForward = true;
+    int sFireCurrentIndex = 0;
+    float[] patternToUse;
+    float sFireTime = 0.0f;
+    float sFireAngle = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        patternToUse = burstPattern1;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (sFireActive)
+        {
+            sFire();
+            return;
+        }
+
         fireTime += Time.deltaTime;
-        if(fireTime >= burstFireDelay)
+        if (fireTime >= burstFireDelay)
         {
             fireTime = 0.0f;
             FireBurst();
         }
     }
 
+    void sFire()
+    {
+        if (patternToUse.Length == 0)
+        {
+            currentPattern++;
+            if (currentPattern > numPatterns)
+            {
+                currentPattern = 1;
+            }
+            sFireActive = false;
+            return;
+        }
+
+        sFireTime += Time.deltaTime;
+        if (sFireTime >= sFireDelay)
+        {
+            if (sFireDirectionForward)
+            {
+                sFireAngle = patternToUse[sFireCurrentIndex];
+                sFireCurrentIndex++;
+                if (sFireCurrentIndex >= patternToUse.Length)
+                {
+                    sFireCurrentIndex = patternToUse.Length - 1;
+                    sFireDirectionForward = false;
+                }
+            }
+            else
+            {
+                sFireAngle = patternToUse[sFireCurrentIndex];
+                sFireCurrentIndex--;
+                if (sFireCurrentIndex < 0)
+                {
+                    sFireCurrentIndex = 0;
+                    sFireDirectionForward = true;
+                    currentPattern++;
+                    if (currentPattern > numPatterns)
+                    {
+                        currentPattern = 1;
+                    }
+                    sFireActive = false;
+                }
+            }
+
+            Vector3 baseFireDirection = transform.forward;
+            sFireTime = 0.0f;
+            Quaternion fireDirection = Quaternion.LookRotation(baseFireDirection, Vector3.up)
+                                        * Quaternion.Euler(0.0f, sFireAngle, 0.0f);
+
+            GameObject projGo = GameObject.Instantiate(projectilePrefab);
+            projGo.transform.position = transform.position;
+            projGo.transform.rotation = fireDirection;
+        }
+    }
+
     void FireBurst()
     {
-        float[] patternToUse;
+        if (Random.value > 0.5f)
+        {
+            sFireActive = true;
+        }
+
         switch (currentPattern)
         {
             case 1:
@@ -73,20 +145,36 @@ public class Turret : MonoBehaviour
                 patternToUse = new float[] { 0.0f };
                 break;
         }
-        Vector3 baseFireDirection = transform.forward;
-        for (int i = 0; i < patternToUse.Length; ++i)
-        {
-            Quaternion fireDirection = Quaternion.LookRotation(baseFireDirection, Vector3.up)
-                                        * Quaternion.Euler(0.0f, patternToUse[i], 0.0f);
 
-            GameObject projGo = GameObject.Instantiate(projectilePrefab);
-            projGo.transform.position = transform.position;
-            projGo.transform.rotation = fireDirection;
-        }
-        currentPattern++;
-        if (currentPattern > numPatterns)
+        if (patternToUse.Length == 0)
         {
-            currentPattern = 1;
+            currentPattern++;
+            if (currentPattern > numPatterns)
+            {
+                currentPattern = 1;
+            }
+            sFireActive = false;
+            return;
+        }
+
+        if(!sFireActive)
+        {
+            Vector3 baseFireDirection = transform.forward;
+            for (int i = 0; i < patternToUse.Length; ++i)
+            {
+                Quaternion fireDirection = Quaternion.LookRotation(baseFireDirection, Vector3.up)
+                                            * Quaternion.Euler(0.0f, patternToUse[i], 0.0f);
+
+                GameObject projGo = GameObject.Instantiate(projectilePrefab);
+                projGo.transform.position = transform.position;
+                projGo.transform.rotation = fireDirection;
+            }
+
+            currentPattern++;
+            if (currentPattern > numPatterns)
+            {
+                currentPattern = 1;
+            }
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Assets.Scripts.Extensions
                 return @this;
 
             bool isAttacking = GetButtonDown(@this.Keys[KeyNames.InstallMineKey]);
-            Debug.Log(isAttacking);
             if (isAttacking)
             {
                 @this.Animator.SetTrigger("installMine");
@@ -32,6 +31,8 @@ namespace Assets.Scripts.Extensions
         {
             if (GetButtonDown(@this.Keys[KeyNames.RollKey]))
                 Skills.Roll.Use();
+            else if (GetButtonDown(@this.Keys[KeyNames.RetrieveKey]))
+                Skills.Retrieve.Use();
 
             return @this;
         }
@@ -52,7 +53,10 @@ namespace Assets.Scripts.Extensions
 
         public static TestController Accelerate(this TestController @this)
         {
-            var conditions = (PlayerAnimations.None | PlayerAnimations.TakingHit);
+            var conditions = (
+                PlayerAnimations.None | 
+                PlayerAnimations.TakingHit |
+                PlayerAnimations.Retrieving);
             if ((@this.Character.CurrentAnimation & conditions) == 0)
                 return @this;
 
@@ -77,7 +81,11 @@ namespace Assets.Scripts.Extensions
 
         public static TestController Turn(this TestController @this)
         {
-            var conditions = (PlayerAnimations.None | PlayerAnimations.TakingHit);
+            var conditions = (
+                PlayerAnimations.None | 
+                PlayerAnimations.TakingHit |
+                PlayerAnimations.Retrieving
+                );
             if ((@this.Character.CurrentAnimation & conditions) == 0)
                 return @this;
 

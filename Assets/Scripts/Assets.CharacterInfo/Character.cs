@@ -13,7 +13,8 @@ namespace Assets.CharacterInfo
         Hitting = 4,
         Dead = 8,
         UsingSkill = 16,
-        InstallingMine = 32
+        InstallingMine = 32,
+        Retrieving = 64
     }
     public enum FacingDirection { Front, Back, SideUp, SideDown }
 

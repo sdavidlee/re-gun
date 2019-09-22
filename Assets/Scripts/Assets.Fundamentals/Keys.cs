@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 namespace Assets.Fundamentals
 {
     public enum KeyNames {
-        InstallMineKey,
         HorizontalKey,
         VerticalKey,
-        RollKey
+        RollKey,
+        InstallMineKey,
+        RetrieveKey
     }
 
     public class Keys

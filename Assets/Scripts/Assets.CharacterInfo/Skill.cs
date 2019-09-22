@@ -15,13 +15,17 @@ namespace Assets.CharacterInfo
         public float CoolTime { get; private set; }
         public float NextAvailableAttack { get; private set; }
         private SkillShortKeys shortKey;
+        private PlayerAnimations targetAnimation;
+        private Action action;
 
-        public Skill(string skillName, float cooltime, SkillShortKeys shortKey)
+        public Skill(string skillName, float cooltime, SkillShortKeys shortKey, PlayerAnimations animation  = PlayerAnimations.UsingSkill, Action action = null)
         {
             this.SkillName = skillName;
             this.CoolTime = cooltime;
             this.NextAvailableAttack = 0;
             this.shortKey = shortKey;
+            this.targetAnimation = animation;
+            this.action = action;
         }
 
         public void Use()
@@ -42,5 +46,6 @@ namespace Assets.CharacterInfo
         //decaptialize the first letter
         public static Skill ThrowWeapon = new Skill("throwWeapon", 4.5f, SkillShortKeys.Q);
         public static Skill Roll = new Skill("roll", 5f, SkillShortKeys.F);
+        public static Skill Retrieve = new Skill("retrieve", 0.5f, SkillShortKeys.E, PlayerAnimations.Retrieving);
     }
 }

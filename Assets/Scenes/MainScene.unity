@@ -1172,7 +1172,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 34.6
+  field of view: 61.5
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1219,17 +1219,17 @@ PrefabInstance:
     - target: {fileID: 2172894635794991252, guid: c06d62016faa48e4080f5f6b3a667b70,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.56
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 2172894635794991252, guid: c06d62016faa48e4080f5f6b3a667b70,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58
+      value: -0.79
       objectReference: {fileID: 0}
     - target: {fileID: 2172894635794991252, guid: c06d62016faa48e4080f5f6b3a667b70,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.28
+      value: -8.1
       objectReference: {fileID: 0}
     - target: {fileID: 2172894635794991252, guid: c06d62016faa48e4080f5f6b3a667b70,
         type: 3}
@@ -1271,15 +1271,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2172894635720252126, guid: c06d62016faa48e4080f5f6b3a667b70,
+        type: 3}
+      propertyPath: minePrefab
+      value: 
+      objectReference: {fileID: 1303925097818660488, guid: a48832314df522f4eaaee2280317622e,
+        type: 3}
+    - target: {fileID: 2172894635794964386, guid: c06d62016faa48e4080f5f6b3a667b70,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2172894635783778482, guid: c06d62016faa48e4080f5f6b3a667b70,
         type: 3}
       propertyPath: m_AABB.m_Center.x
-      value: -0.0019176602
+      value: -0.0019177198
       objectReference: {fileID: 0}
     - target: {fileID: 2172894635783778482, guid: c06d62016faa48e4080f5f6b3a667b70,
         type: 3}
       propertyPath: m_AABB.m_Center.y
-      value: 0.0029001236
+      value: 0.0029006004
       objectReference: {fileID: 0}
     - target: {fileID: 2172894635783778482, guid: c06d62016faa48e4080f5f6b3a667b70,
         type: 3}
@@ -1299,7 +1310,7 @@ PrefabInstance:
     - target: {fileID: 2172894635783778482, guid: c06d62016faa48e4080f5f6b3a667b70,
         type: 3}
       propertyPath: m_AABB.m_Extent.z
-      value: 0.24808687
+      value: 0.24808681
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c06d62016faa48e4080f5f6b3a667b70, type: 3}

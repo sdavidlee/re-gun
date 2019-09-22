@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Assets.Fundamentals
 {
     public enum KeyNames {
+        InstallMineKey,
         HorizontalKey,
         VerticalKey,
         RollKey

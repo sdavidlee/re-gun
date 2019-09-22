@@ -15,14 +15,15 @@ namespace Assets.Scripts.Extensions
             if (Time.time < stats.NextAvailabeAttack)
                 return @this;
 
-            //bool isAttacking = GetButtonDown(@this.Keys[KeyNames.AttackKey]);
-            //if (isAttacking)
-            //{
-            //    @this.Animator.SetTrigger("attack");
-            //    @this.Movement.CanMove = false;
-            //    @this.Movement.CurrentSpeed *= 0.3f;
-            //    stats.NextAvailabeAttack = Time.time + stats.CoolTime;
-            //}
+            bool isAttacking = GetButtonDown(@this.Keys[KeyNames.InstallMineKey]);
+            Debug.Log(isAttacking);
+            if (isAttacking)
+            {
+                @this.Animator.SetTrigger("installMine");
+                @this.Character.CurrentAnimation = PlayerAnimations.InstallingMine;
+                @this.Movement.CurrentSpeed *= 0.3f;
+                stats.NextAvailabeAttack = Time.time + stats.CoolTime;
+            }
 
             return @this;
         }

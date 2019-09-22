@@ -25,26 +25,9 @@ namespace Assets.CharacterInfo
             Stats = GetComponent<PlayerStats>();
         }
 
-        public void Hit()
+        public void InstallMine()
         {
-            var spherePosition = transform.position + transform.forward * offset;
-            int hitsCount = Physics.OverlapSphereNonAlloc(spherePosition, radius: 1.4f, hitResults, 1 << 8);
-
-            var validHits =
-                hitResults
-                    .Where(h =>
-                            (h != null) &&
-                            (!h.GetComponent<Enemy>().IsDead));
-
-            if (validHits.All(h => h == null))
-                return;
-
-            var hit =
-                validHits
-                    .First();
-
-            hit.GetComponent<IHittable>().TakeHit(this.Stats, AttackTypes.Normal);
-            hitResults.ClearAll();
+            Instantiate(Self.MinePrefab, Self.MinePosition, Quaternion.identity);
         }
 
         public void TakeHit(GameObject hitter)

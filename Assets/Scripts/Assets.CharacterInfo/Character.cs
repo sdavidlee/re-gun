@@ -23,6 +23,10 @@ namespace Assets.CharacterInfo
     {
         public event Action PlayerDied;
 
+        [SerializeField] private GameObject _minePrefab;
+        public GameObject MinePrefab { get => _minePrefab; }
+        [SerializeField] private Transform _minePosition;
+        public Vector3 MinePosition { get => _minePosition.position; }
         [SerializeField] private Transform _center;
         public Transform Center { get => _center;}
         public PlayerAnimations CurrentAnimation { get; set; } = PlayerAnimations.None;
